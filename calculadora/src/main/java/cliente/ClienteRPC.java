@@ -17,10 +17,11 @@ public class ClienteRPC {
         teclado.useDelimiter("\n");
 
         XmlRpcClientConfigImpl configuracion = new XmlRpcClientConfigImpl();
-        configuracion.setServerURL(new URL("http://localhost:1800"));
+        configuracion.setServerURL(new URL("http://localhost:1800"));// en lugar de poner localhost ponemos la ip del compañero
         XmlRpcClient cliente = new XmlRpcClient();
         cliente.setConfig(configuracion);
 
+        daoOperaciones operacion= new daoOperaciones();
         String option = "", firstNumber = "", secondNumber = "";
         double num1, num2;
         String green="\033[32m";
@@ -55,11 +56,11 @@ public class ClienteRPC {
                         } while (!isDouble(secondNumber));
                         num1 = Double.parseDouble(firstNumber);
                         num2 = Double.parseDouble(secondNumber);
-                        Object[] resultado = {num1, num2};
+                        Object[] resultado = {num1, num2};// forma implicita de llenar un arreglo y defnir su tamaño1
                         Double response = (Double) cliente.execute("operaciones.suma", resultado);
                         System.out.println(green+"\nEl resultado es" + response+reset);
-
-
+                        boolean registro= operacion.saveOperaciones("suma",num1,num2,response);
+                        System.out.println(registro);
                         break;
                     case 2:
                         System.out.println(yellow+"\n******resta*******"+reset);

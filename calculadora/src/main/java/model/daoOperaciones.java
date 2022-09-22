@@ -28,7 +28,9 @@ public class daoOperaciones<E> {
             conn = new Conexion().getConnection();
             String query = GET_OPERATIONS;
             pstm = conn.prepareStatement(query);
+            // pstm = conn.prepareStatement(query,PreparedStatement.RETURN_GENERATED_KEYS); con esta linea obtenemos el id que tiene esa sentencia
             rs = pstm.executeQuery();
+            //rs= pstm.getGeneratedKeys();
             while (rs.next()){
                 operation= new Object[5];
                 String registro;
@@ -37,7 +39,7 @@ public class daoOperaciones<E> {
                 operation[2]=rs.getDouble("second_number");
                 operation[3]=(rs.getDouble("result"));
                 operation[4]=rs.getDate("create_at");
-                registro=operation[0]+" "+operation[1]+" "+operation[2]+" "+operation[3]+" "+operation[4];
+                registro=operation[0]+" "+operation[1]+" "+operation[2]+" "+operation[3]+" "+operation[4]+"\n";
                 personList.add(registro);
             }
 
@@ -55,6 +57,7 @@ public class daoOperaciones<E> {
         try {
             conn = new Conexion().getConnection();
             String query = INSERT_OPERATION;
+            conn.setAutoCommit(false);
             pstm = conn.prepareStatement(query);
             pstm.setString(1, operacion);
             pstm.setDouble(2, num1);
@@ -64,6 +67,11 @@ public class daoOperaciones<E> {
         }catch (SQLException e){
             Logger.getLogger(daoOperaciones.class.getName())
                     .log(Level.SEVERE, "Error al guardar la operacion -> ", e);
+            try{
+                conn.rollback();
+            }catch (SQLException ex){
+                System.out.println(ex);
+            }
             return false;
         } finally {
             closeConnections();
