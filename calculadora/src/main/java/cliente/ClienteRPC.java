@@ -59,10 +59,10 @@ public class ClienteRPC {
                         num2 = Double.parseDouble(secondNumber);
                         Object[] resultado = {num1, num2};// forma implicita de llenar un arreglo y defnir su tamaño1
                         Double response = (Double) cliente.execute("operaciones.suma", resultado);
-                        System.out.println(green+"\nEl resultado es" + response +reset);
+                        System.out.println(green+"\nEl resultado es " + response +reset);
                          boolean registro = operacion.saveOperaciones("suma",num1,num2,response);
                         if (registro)
-                         System.out.println(green+"Respuesta guardada en el historial"+reset);
+                         System.out.println(green+"Respuesta guardada en el historial "+reset);
                         break;
                     case 2:
                         System.out.println(yellow+"\n******resta*******"+reset);
@@ -82,7 +82,7 @@ public class ClienteRPC {
                         num2 = Double.parseDouble(secondNumber);
                         Object[] resultado2 = {num1, num2};
                         Double response2 = (Double) cliente.execute("operaciones.resta", resultado2);
-                        System.out.println(green+"\nEl resultado es" + response2+reset);
+                        System.out.println(green+"\nEl resultado es " + response2+reset);
                         boolean registro2 = operacion.saveOperaciones("resta",num1,num2,response2);
                         if (registro2)
                             System.out.println(green+"Respuesta guardada en el historial"+reset);
@@ -106,7 +106,7 @@ public class ClienteRPC {
                         num2 = Double.parseDouble(secondNumber);
                         Object[] resultado3 = {num1, num2};
                         Double response3 = (Double) cliente.execute("operaciones.multiplicacion", resultado3);
-                        System.out.println(green+"\nEl resultado es" + response3+reset);
+                        System.out.println(green+"\nEl resultado es " + response3+reset);
                         boolean registro3 = operacion.saveOperaciones("Multiplicacion",num1,num2,response3);
                         if (registro3)
                             System.out.println(green+"Respuesta guardada en el historial"+reset);
@@ -129,7 +129,7 @@ public class ClienteRPC {
                         num2 = Double.parseDouble(secondNumber);
                         Object[] resultado4 = {num1, num2};
                         Double response4 = (Double) cliente.execute("operaciones.division", resultado4);
-                        System.out.println(green+"\nEl resultado es" + response4+reset);
+                        System.out.println(green+"\nEl resultado es " + response4+reset);
                         boolean registro4 = operacion.saveOperaciones("Division",num1,num2,response4);
                         if (registro4)
                             System.out.println(green+"Respuesta guardada en el historial"+reset);
@@ -155,7 +155,7 @@ public class ClienteRPC {
                         num2 = Double.parseDouble(secondNumber);
                         Object[] resultado5 = {num1, num2};
                         Double response5 = (Double) cliente.execute("operaciones.exponente", resultado5);
-                        System.out.println(green+"\nEl resultado es" + response5+reset);
+                        System.out.println(green+"\nEl resultado es " + response5+reset);
                         boolean registro5 = operacion.saveOperaciones("Exponente",num1,num2,response5);
                         if (registro5)
                             System.out.println(green+"Respuesta guardada en el historial"+reset);
@@ -174,7 +174,7 @@ public class ClienteRPC {
 
                         Object[] resultado6 = {num1};
                         Double response6 = (Double) cliente.execute("operaciones.raiz", resultado6);
-                        System.out.println(green+"\nEl resultado es" + response6+reset);
+                        System.out.println(green+"\nEl resultado es " + response6+reset);
                         boolean registro6 = operacion.saveOperaciones("Raiz cuadrada",num1,2,response6);
                         if (registro6)
                             System.out.println(green+"Respuesta guardada en el historial"+reset);
