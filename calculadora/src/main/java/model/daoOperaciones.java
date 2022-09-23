@@ -19,7 +19,7 @@ public class daoOperaciones<E> {
     ResultSet rs;
     private final String GET_OPERATIONS = "SELECT * FROM operations";
 
-    private final String INSERT_OPERATION = "INSERT INTO operations (operation, first_number, second_number, result,create_at) VALUES (?, ?, ?, ?,curdate())";
+    private final String INSERT_OPERATION = "INSERT INTO operations (type, first_number, second_number, result) VALUES (?, ?, ?, ?)";
 
     public ArrayList<Object> showOperations (){
         ArrayList<Object> personList = new ArrayList<>();
@@ -34,12 +34,12 @@ public class daoOperaciones<E> {
             while (rs.next()){
                 operation= new Object[5];
                 String registro;
-                operation[0]=rs.getString("operation");
+                operation[0]=rs.getString("type");
                 operation[1]=rs.getDouble("first_number");
                 operation[2]=rs.getDouble("second_number");
-                operation[3]=(rs.getDouble("result"));
-                operation[4]=rs.getDate("create_at");
-                registro=operation[0]+" "+operation[1]+" "+operation[2]+" "+operation[3]+" "+operation[4]+"\n";
+                operation[3]=rs.getDouble("result");
+                operation[4]=rs.getDate("created_at");
+                registro=" | "+operation[0]+" | "+operation[1]+" | "+operation[2]+" | "+operation[3]+"| "+operation[4]+" |\n";
                 personList.add(registro);
             }
 
@@ -57,13 +57,13 @@ public class daoOperaciones<E> {
         try {
             conn = new Conexion().getConnection();
             String query = INSERT_OPERATION;
-            conn.setAutoCommit(false);
+            //conn.setAutoCommit(false);
             pstm = conn.prepareStatement(query);
             pstm.setString(1, operacion);
             pstm.setDouble(2, num1);
             pstm.setDouble(3, num2);
             pstm.setDouble(4, resutado);
-            return pstm.executeUpdate()==1; //1==1
+            return pstm.executeUpdate()==1;
         }catch (SQLException e){
             Logger.getLogger(daoOperaciones.class.getName())
                     .log(Level.SEVERE, "Error al guardar la operacion -> ", e);
@@ -73,9 +73,9 @@ public class daoOperaciones<E> {
                 System.out.println(ex);
             }
             return false;
-        } finally {
+        } /*finally {
             closeConnections();
-        }
+        }*/
     }
     public void closeConnections(){
         try{
