@@ -108,7 +108,7 @@ public class RPCClient {
                     String response = (String) client.execute("Methods.curp", data);
                     System.out.println("Su CURP es " + response);
                     String fecha=dia+"-"+mes+"-"+anio;
-                    boolean registro = curp.saveOperaciones(response,nombre,apellido1,apellido1,fecha,sexo,estado);
+                    boolean registro = curp.saveOperaciones(response,nombre,apellido1,apellido2,fecha,sexo,estado);
                     if (registro)
                         System.out.println(green + "Curp guardada en el historial" + reset);
 
