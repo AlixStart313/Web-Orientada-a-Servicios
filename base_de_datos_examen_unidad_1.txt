@@ -1,0 +1,16 @@
+create database registroCivil;
+
+use registroCivil;
+
+create table  curps(
+id int auto_increment not null primary key,
+curp varchar (18) not null ,
+nombre varchar(60) not null,
+apellido1 varchar(60) not null,
+apellido2 varchar(60) not null,
+fecha_de_nacimiento Varchar(30) not null,
+sexo varchar(30) not null,
+estado_de_nacimiento varchar(80) not null
+);
+
+select * from curps;
