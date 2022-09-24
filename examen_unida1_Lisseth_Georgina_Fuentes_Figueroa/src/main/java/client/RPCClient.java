@@ -127,7 +127,9 @@ public class RPCClient {
                 case "3":
                     System.out.println(yellow+"******************HISTORIAL*********************"+reset);
                     System.out.println(green+"         CURP        |   Nombre    |  Apellido Paterno  |  Apellido Materno |  Fecha de Nacimiento |   Sexo   | Estado de nacimiento\n"+reset);
-                    System.out.println(curp.showpersons());
+                    Object[] registros = {""};
+                    String registrosCurps = (String) client.execute("Methods.consultar", registros);
+                    System.out.println( registrosCurps);
                     break;
                 case "4":
                     seguir=false;

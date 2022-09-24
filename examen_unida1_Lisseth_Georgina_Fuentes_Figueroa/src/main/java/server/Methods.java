@@ -76,7 +76,7 @@ public class Methods {
         letras=letra2+letra3+letra1;
         String[] abc = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-        int numero = (int) (Math.random() * 26) + 1;
+        int numero = (int) (Math.random() * 27) + 0;
         int numero2 = (int) (Math.random() * 9) + 1;
         sexo=sexo.toUpperCase();
         if (sexo.equals("MUJER")) {
@@ -96,5 +96,12 @@ public class Methods {
         persona= String.valueOf(curps.showperson(busqueda));
         return persona;
     }
+
+    public String consultar(String busqueda){
+        String persona;
+        persona= String.valueOf(curps.showpersons());
+        return persona;
+    }
+
 
 }

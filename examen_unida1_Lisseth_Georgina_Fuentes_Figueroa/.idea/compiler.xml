@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Examen_Práctico_Unidad_1_Lisseth_Georgina_Fuentes_Figueroa" />
+        <module name="examen_unida1_Lisseth_Georgina_Fuentes_Figueroa" />
         <module name="Examen_Unidad1_Lisseth_Georgina_Fuentes_Figueroa" />
       </profile>
     </annotationProcessing>
